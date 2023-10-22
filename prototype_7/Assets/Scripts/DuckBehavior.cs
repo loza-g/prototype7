@@ -13,7 +13,6 @@ public class DuckBehavior : MonoBehaviour
 
     public int speed = 3;
 
-
     void Awake()
     {
         s = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
@@ -86,6 +85,5 @@ public class DuckBehavior : MonoBehaviour
 
         }
 
-        // remove all force from the duck
     }
 }
