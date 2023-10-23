@@ -5,6 +5,7 @@ using UnityEngine;
 public class DuckBehavior : MonoBehaviour
 {
 
+    public GameManagerBehavior gameMgr;
     // screen edges in world space
     float s;
     float t;
@@ -85,5 +86,24 @@ public class DuckBehavior : MonoBehaviour
 
         }
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("bulletEater"))
+        {
+            if(gameMgr.GetBulletCount() > 0)
+            {
+                gameMgr.UpdateBulletCount();
+                Debug.Log("Duck ate bullet. current bullet count: " + gameMgr.GetBulletCount());
+                Destroy(collision.gameObject);
+            }
+            
+        }
+
+        if (collision.gameObject.CompareTag("duckSpeed"))
+        {
+            speed += 2;
+        }
     }
 }

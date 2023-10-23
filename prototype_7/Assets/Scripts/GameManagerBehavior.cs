@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerBehavior : MonoBehaviour
 {
@@ -23,6 +24,16 @@ public class GameManagerBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         ducksRemainingText.text = "ducks remaining: " + ducksRemaining;
         bulletsRemainingText.text = "bullets remaining: " + bulletsRemaining;
 
@@ -61,6 +72,16 @@ public class GameManagerBehavior : MonoBehaviour
                 bulletsRemaining--;
             }
         }
+    }
+
+    public int GetBulletCount()
+    {
+        return bulletsRemaining;
+    }
+
+    public void UpdateBulletCount()
+    {
+        bulletsRemaining--;
     }
 
 }
