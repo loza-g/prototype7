@@ -129,16 +129,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2205559103846122216}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869c25d453c1043d699bf3787fc7ef33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circlePrefab: {fileID: 2205559103846122216}
-  minSpawnTime: 1
-  maxSpawnTime: 3
+  bulletEater: {fileID: 0}
+  duckSpeed: {fileID: 0}
+  minSpawnTime_a: 1
+  maxSpawnTime_a: 3
+  minSpawnTime_b: 1
+  maxSpawnTime_b: 3
   powerLifetime: 5
-  maxSpawnCount: 3
+  maxSpawnCount_a: 3
+  maxSpawnCount_b: 3
 --- !u!50 &7490278604513418604
 Rigidbody2D:
   serializedVersion: 4

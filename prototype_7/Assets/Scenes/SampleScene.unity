@@ -1047,6 +1047,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873835127}
   m_CullTransparentMesh: 0
+--- !u!1 &907884597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 907884599}
+  - component: {fileID: 907884598}
+  m_Layer: 0
+  m_Name: spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &907884598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907884597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869c25d453c1043d699bf3787fc7ef33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletEater: {fileID: 4411082636696899458}
+  duckSpeed: {fileID: 928888608}
+  minSpawnTime_a: 4
+  maxSpawnTime_a: 8
+  minSpawnTime_b: 1
+  maxSpawnTime_b: 3
+  powerLifetime: 5
+  maxSpawnCount_a: 3
+  maxSpawnCount_b: 2
+--- !u!4 &907884599
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907884597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.71, y: -5.49, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &928888608 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6536435199024003191, guid: 424dd1a26440441958d11fcc58decb80, type: 3}
@@ -1059,16 +1112,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928888608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 869c25d453c1043d699bf3787fc7ef33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circlePrefab: {fileID: 928888608}
-  minSpawnTime: 1
-  maxSpawnTime: 3
+  bulletEater: {fileID: 0}
+  duckSpeed: {fileID: 0}
+  minSpawnTime_a: 1
+  maxSpawnTime_a: 3
+  minSpawnTime_b: 1
+  maxSpawnTime_b: 3
   powerLifetime: 5
-  maxSpawnCount: 3
+  maxSpawnCount_a: 3
+  maxSpawnCount_b: 3
 --- !u!50 &928888615
 Rigidbody2D:
   serializedVersion: 4
@@ -1306,7 +1363,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4411082636696899458}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0ab4522d473c84adcabc2a20b4ee914d, type: 3}
   m_Name: 
@@ -1329,3 +1386,4 @@ SceneRoots:
   - {fileID: 4103433694605526169}
   - {fileID: 5898815746067951920}
   - {fileID: 374551392}
+  - {fileID: 907884599}
