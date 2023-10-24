@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DuckBehavior : MonoBehaviour
 {
@@ -169,6 +170,20 @@ public class DuckBehavior : MonoBehaviour
             Destroy(collision.gameObject);
             Vector2 newPos = chooseLocation(); 
             StartCoroutine(teleportLoop());
+
+        }
+
+        if (collision.gameObject.CompareTag("reticleSwap"))
+        {
+            //swap mouse and duck positions
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
+            Vector3 duckPos = transform.position;
+            duckPos.z = 0;
+            transform.position = mousePos;
+
+            Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(duckPos));
+            Destroy(collision.gameObject);
 
         }
     }

@@ -9,6 +9,7 @@ TagManager:
   - bulletEater
   - duckSpeed
   - duckTeleport
+  - reticleSwap
   layers:
   - Default
   - TransparentFX
