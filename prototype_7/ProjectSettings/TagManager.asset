@@ -8,6 +8,7 @@ TagManager:
   - PowerUp
   - bulletEater
   - duckSpeed
+  - duckTeleport
   layers:
   - Default
   - TransparentFX

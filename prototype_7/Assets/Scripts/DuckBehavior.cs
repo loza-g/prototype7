@@ -5,6 +5,8 @@ using UnityEngine;
 public class DuckBehavior : MonoBehaviour
 {
 
+    // teleport shadow
+    public GameObject tS;
     public GameManagerBehavior gameMgr;
     // screen edges in world space
     float s;
@@ -20,6 +22,61 @@ public class DuckBehavior : MonoBehaviour
         t = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, 0, 0)).x;
         u = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
         v = Camera.main.ScreenToWorldPoint(new Vector3(0, Screen.height, 0)).y;
+    }
+
+    Vector3 chooseLocation() {
+        // choose a random location within the screen to spawn the duck so that the whole sprite will be on the screen
+        // get the screen width and height
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // get the width and height of the duck sprite
+        float duckWidth = GetComponent<SpriteRenderer>().bounds.size.x;
+        float duckHeight = GetComponent<SpriteRenderer>().bounds.size.y;
+
+        // get the x and y coordinates of the bottom left corner of the duck sprite
+        float duckX = transform.position.x - duckWidth / 2;
+        float duckY = transform.position.y - duckHeight / 2;
+
+        // get the x and y coordinates of the top right corner of the duck sprite
+        float duckX2 = transform.position.x + duckWidth / 2;
+        float duckY2 = transform.position.y + duckHeight / 2;
+
+        // get the x and y coordinates of the bottom left corner of the screen
+        float screenX = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).x;
+        float screenY = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0)).y;
+
+        // get the x and y coordinates of the top right corner of the screen
+        float screenX2 = Camera.main.ScreenToWorldPoint(new Vector3(screenWidth, 0, 0)).x;
+        float screenY2 = Camera.main.ScreenToWorldPoint(new Vector3(0, screenHeight, 0)).y;
+
+        // get the width and height of the screen
+        float screenWidth2 = screenX2 - screenX;
+        float screenHeight2 = screenY2 - screenY;
+
+        // get the width and height of the duck sprite
+        float duckWidth2 = duckX2 - duckX;
+        float duckHeight2 = duckY2 - duckY;
+
+        // get the width and height of the screen minus the width and height of the duck sprite
+        float screenWidth3 = screenWidth2 - duckWidth2;
+        float screenHeight3 = screenHeight2 - duckHeight2;
+
+        // get the x and y coordinates of the bottom left corner of the screen plus half the width and height of the duck sprite
+        float screenX3 = screenX + duckWidth2 / 2;
+        float screenY3 = screenY + duckHeight2 / 2;
+
+        // get the x and y coordinates of the top right corner of the screen minus half the width and height of the duck sprite
+        float screenX4 = screenX2 - duckWidth2 / 2;
+        float screenY4 = screenY2 - duckHeight2 / 2;
+
+        // get the x and y coordinates of the bottom left corner of the screen plus half the width and height of the duck sprite plus a random number between 0 and the width and height of the screen minus the width and height of the duck sprite
+        float screenX5 = screenX3 + Random.Range(0, screenWidth3);
+        float screenY5 = screenY3 + Random.Range(0, screenHeight3);
+
+        // return chosen position
+        return new Vector3(screenX5, screenY5, 0);
+
     }
 
 
@@ -106,5 +163,25 @@ public class DuckBehavior : MonoBehaviour
             speed += 2;
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("duckTeleport"))
+        {
+            Destroy(collision.gameObject);
+            Vector2 newPos = chooseLocation(); 
+            StartCoroutine(teleportLoop());
+
+        }
     }
+
+    IEnumerator teleportLoop() 
+    {
+        while (true)
+        {
+            Vector3 newPos = chooseLocation();
+            Instantiate(tS, newPos, Quaternion.identity);
+            yield return new WaitForSeconds(0.5f);
+            transform.position = newPos;
+           
+        }
+    }   
 }
