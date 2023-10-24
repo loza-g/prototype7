@@ -152,9 +152,11 @@ public class DuckBehavior : MonoBehaviour
         {
             if(gameMgr.GetBulletCount() > 0)
             {
-                gameMgr.UpdateBulletCount();
-                Debug.Log("Duck ate bullet. current bullet count: " + gameMgr.GetBulletCount());
-                Destroy(collision.gameObject);
+                gameMgr.UpdateBulletCount(2);
+                Debug.Log("Duck ate 2 bullets. current bullet count: " + gameMgr.GetBulletCount());
+                if(collision.gameObject != null) {
+                    Destroy(collision.gameObject);
+                }
             }
             
         }
@@ -162,13 +164,20 @@ public class DuckBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("duckSpeed"))
         {
             speed += 2;
-            Destroy(collision.gameObject);
+            if (collision.gameObject != null)
+            {
+                Destroy(collision.gameObject);
+            }
         }
 
         if (collision.gameObject.CompareTag("duckTeleport"))
         {
-            Destroy(collision.gameObject);
-            Vector2 newPos = chooseLocation(); 
+            if (collision.gameObject != null)
+            {
+                Destroy(collision.gameObject);
+            }
+            Vector2 newPos = chooseLocation();
+            //maybe add random yield time here 
             StartCoroutine(teleportLoop());
 
         }
@@ -183,8 +192,10 @@ public class DuckBehavior : MonoBehaviour
             transform.position = mousePos;
 
             Mouse.current.WarpCursorPosition(Camera.main.WorldToScreenPoint(duckPos));
-            Destroy(collision.gameObject);
-
+            if (collision.gameObject != null)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 

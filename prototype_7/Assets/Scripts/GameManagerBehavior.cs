@@ -67,6 +67,15 @@ public class GameManagerBehavior : MonoBehaviour
                         // decrease the number of ducks remaining
                         ducksRemaining--;
                     }
+                    if(hitCollider.gameObject.tag == "bulletEater" || hitCollider.gameObject.tag == "duckSpeed" ||
+                        hitCollider.gameObject.tag == "duckTeleport" || hitCollider.gameObject.tag == "reticleSwap")
+                    {
+                        Debug.Log("Shot power up.");
+                        if(hitCollider.gameObject != null)
+                        {
+                            Destroy(hitCollider.gameObject);
+                        }
+                    }
                 }
 
                 bulletsRemaining--;
@@ -79,9 +88,9 @@ public class GameManagerBehavior : MonoBehaviour
         return bulletsRemaining;
     }
 
-    public void UpdateBulletCount()
+    public void UpdateBulletCount(int num)
     {
-        bulletsRemaining--;
+        bulletsRemaining -= num;
     }
 
 }

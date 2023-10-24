@@ -70,7 +70,11 @@ public class speedPowerUp : MonoBehaviour
         // Instantiate  at the random position
         GameObject power = Instantiate(obj, worldPosition, Quaternion.identity);
         //Destroy(power, powerLifetime); // Destroy the object after _ seconds
-        StartCoroutine(DestroyAfterTime(power, powerLifetime));
+        if (power != null)
+        {
+            StartCoroutine(DestroyAfterTime(power, powerLifetime));
+        }
+       
     }
 
     private IEnumerator DestroyAfterTime(GameObject obj, float time)
