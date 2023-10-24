@@ -104,6 +104,7 @@ public class DuckBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("duckSpeed"))
         {
             speed += 2;
+            Destroy(collision.gameObject);
         }
     }
 }
