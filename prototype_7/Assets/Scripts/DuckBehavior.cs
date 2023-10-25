@@ -19,6 +19,8 @@ public class DuckBehavior : MonoBehaviour
 
     public int speed = 6;
 
+    private bool isTeleporting = false;
+
     enum direction { up, down, left, right, diagonalUpLeft, diagonalUpRight, diagonalDownLeft, diagonalDownRight };
     direction currentDirection;
 
@@ -177,7 +179,10 @@ public class DuckBehavior : MonoBehaviour
             }
             Vector2 newPos = chooseLocation();
             //maybe add random yield time here 
-            StartCoroutine(teleportLoop());
+
+            if (!isTeleporting) StartCoroutine(teleportLoop());
+
+            isTeleporting = true;
 
         }
 

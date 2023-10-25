@@ -46,10 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletEater: {fileID: 2205559103846122216, guid: 1e062a1fd9ff8ae47951af1f0a6f46d5, type: 3}
   duckSpeed: {fileID: 6536435199024003191, guid: 424dd1a26440441958d11fcc58decb80, type: 3}
-  minSpawnTime_a: 4
-  maxSpawnTime_a: 8
-  minSpawnTime_b: 1
-  maxSpawnTime_b: 3
+  teleport: {fileID: 1437006652636688697, guid: 643d6c8306b889f4480c7f0b7a5c812e, type: 3}
+  swap: {fileID: 1203646428672724250, guid: d9f54f9ff5de38d459d9f3a45075bf03, type: 3}
+  minSpawnTime_a: 0.001
+  maxSpawnTime_a: 0.001
+  minSpawnTime_b: 0.001
+  maxSpawnTime_b: 0.001
   powerLifetime: 5
   maxSpawnCount_a: 3
   maxSpawnCount_b: 2
