@@ -214,7 +214,7 @@ public class DuckBehavior : MonoBehaviour
 
         while (true)
         {
-            float time = Random.Range(1f, 4f);
+            int time = Random.Range(1, 4);
             yield return new WaitForSeconds(time);
             int dirInt = Random.Range(0, 8);
             currentDirection = (direction) dirInt;

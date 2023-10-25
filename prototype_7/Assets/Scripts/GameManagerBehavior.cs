@@ -75,8 +75,6 @@ public class GameManagerBehavior : MonoBehaviour
                 // get the collider at the mouse position
                 Collider2D hitCollider = Physics2D.OverlapPoint(mousePosWorld);
 
-                Debug.Log(hitCollider);
-
                 // if the collider is not null
                 if (hitCollider != null)
                 {
@@ -108,9 +106,9 @@ public class GameManagerBehavior : MonoBehaviour
             //load next scene, play success audio 
             LoadNextScene();
         }
-        if(bulletsRemaining == 0)
+        if(bulletsRemaining == 0 && ducksRemaining > 0 || timeLeft == 0)
         {
-            RestartCurrentScene();
+            Reset();
         }
 
     }
@@ -128,12 +126,15 @@ public class GameManagerBehavior : MonoBehaviour
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
-
     }
 
     public void RestartCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Reset()
+    {
+        SceneManager.LoadScene(0);
     }
 }
