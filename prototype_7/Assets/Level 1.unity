@@ -499,8 +499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 319200207}
-  ducksRemaining: 10
-  bulletsRemaining: 10
+  audioPlayerWin: {fileID: 0}
+  audioPlayerLose: {fileID: 0}
+  ducksRemaining: 1
+  bulletsRemaining: 5
+  totalTime: 30
 --- !u!1001 &720122406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -858,6 +861,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3879679519904589283, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
+      propertyPath: maxSpawnCount_a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879679519904589283, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
+      propertyPath: maxSpawnCount_b
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4629623995597481450, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
       propertyPath: m_RootOrder
       value: 5

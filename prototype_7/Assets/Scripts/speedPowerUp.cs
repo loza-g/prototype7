@@ -6,6 +6,8 @@ public class speedPowerUp : MonoBehaviour
 {
     public GameObject bulletEater;
     public GameObject duckSpeed;
+    public GameObject teleport;
+    public GameObject swap;
 
     public float minSpawnTime_a = 1f;
     public float maxSpawnTime_a = 3f;
@@ -17,15 +19,20 @@ public class speedPowerUp : MonoBehaviour
 
     private int currentSpawnCount_eater;
     private int currentSpawnCount_speed;
+    private int currentSpawnCount_teleport;
+    private int currentSpawnCount_swap;
     // Start is called before the first frame update
     void Start()
     {
         currentSpawnCount_eater = 0;
         currentSpawnCount_speed = 0;
-
+        currentSpawnCount_teleport = 0;
+        currentSpawnCount_swap = 0;
 
         StartCoroutine(spawnEater());
         StartCoroutine(spawnDuckSpeed());
+        StartCoroutine(spawnTeleport());
+        StartCoroutine(spawnSwap());
     }
 
     // Update is called once per frame
@@ -46,6 +53,33 @@ public class speedPowerUp : MonoBehaviour
           
         }
     }
+
+    private IEnumerator spawnTeleport()
+    {
+        //if max spawn count has not been reached and no other power up is spawned
+        while (currentSpawnCount_eater < maxSpawnCount_a)
+        {
+            yield return new WaitForSeconds(maxSpawnTime_a);
+            InstantiatePowerUp(teleport);
+            currentSpawnCount_teleport++;
+            Debug.Log("instantiated bullet eater power up. Current spawn count is: " + currentSpawnCount_teleport);
+
+        }
+    }
+
+    private IEnumerator spawnSwap()
+    {
+        //if max spawn count has not been reached and no other power up is spawned
+        while (currentSpawnCount_swap < maxSpawnCount_a)
+        {
+            yield return new WaitForSeconds(maxSpawnTime_a);
+            InstantiatePowerUp(swap);
+            currentSpawnCount_swap++;
+            Debug.Log("instantiated bullet eater power up. Current spawn count is: " + currentSpawnCount_swap);
+
+        }
+    }
+
 
     private IEnumerator spawnDuckSpeed()
     {

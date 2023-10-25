@@ -266,6 +266,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3879679519904589283, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
+      propertyPath: swap
+      value: 
+      objectReference: {fileID: 1203646428672724250, guid: d9f54f9ff5de38d459d9f3a45075bf03, type: 3}
+    - target: {fileID: 3879679519904589283, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
+      propertyPath: teleport
+      value: 
+      objectReference: {fileID: 1437006652636688697, guid: 643d6c8306b889f4480c7f0b7a5c812e, type: 3}
     - target: {fileID: 4629623995597481450, guid: 832acaf8aa5682e418a94d651e985ca8, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -467,6 +475,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354062820686100634, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
+      propertyPath: teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -632,6 +644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354062820686100634, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
+      propertyPath: teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -682,8 +698,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 319200207}
-  ducksRemaining: 10
+  audioPlayerWin: {fileID: 0}
+  audioPlayerLose: {fileID: 0}
+  ducksRemaining: 5
   bulletsRemaining: 10
+  totalTime: 30
 --- !u!1001 &720122406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -920,7 +939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &907884598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletEater: {fileID: 0}
   duckSpeed: {fileID: 0}
+  teleport: {fileID: 0}
+  swap: {fileID: 0}
   minSpawnTime_a: 4
   maxSpawnTime_a: 8
   minSpawnTime_b: 1
@@ -1013,6 +1034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354062820686100634, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
+      propertyPath: teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1074,6 +1099,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6354062820686100634, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
+      propertyPath: teleportDelay
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1134,6 +1163,10 @@ PrefabInstance:
     - target: {fileID: 5058686867095094201, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354062820686100634, guid: a3dbeefed71e51f4aa9189495ca3d874, type: 3}
+      propertyPath: teleportDelay
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

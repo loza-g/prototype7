@@ -7,23 +7,40 @@ using UnityEngine.SceneManagement;
 public class GameManagerBehavior : MonoBehaviour
 {
     public GameObject ui;
-
+    
     private TextMeshProUGUI ducksRemainingText;
     private TextMeshProUGUI bulletsRemainingText;
-
+    [SerializeField] private AudioSource audioPlayerWin;
+    [SerializeField] private AudioSource audioPlayerLose;
     public int ducksRemaining = 10;
     public int bulletsRemaining = 10;
+    public float totalTime = 30f;
+    private float timeLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         ducksRemainingText = ui.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         bulletsRemainingText = ui.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        timeLeft = totalTime;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timeLeft -= Time.deltaTime;
+
+        if (timeLeft < 0)
+        {
+            timeLeft = 0;
+
+            if(ducksRemaining > 0)
+            {
+                //reload scene, play lose audio
+                RestartCurrentScene();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
@@ -81,6 +98,17 @@ public class GameManagerBehavior : MonoBehaviour
                 bulletsRemaining--;
             }
         }
+
+        if(ducksRemaining == 0)
+        {
+            //load next scene, play success audio 
+            LoadNextScene();
+        }
+        if(bulletsRemaining == 0)
+        {
+            RestartCurrentScene();
+        }
+
     }
 
     public int GetBulletCount()
@@ -93,4 +121,13 @@ public class GameManagerBehavior : MonoBehaviour
         bulletsRemaining -= num;
     }
 
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RestartCurrentScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 }

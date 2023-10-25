@@ -15,6 +15,7 @@ public class DuckBehavior : MonoBehaviour
     float t;
     float u;
     float v;
+    public float teleportDelay = 1f;
 
     public int speed = 6;
 
@@ -202,7 +203,7 @@ public class DuckBehavior : MonoBehaviour
         {
             Vector3 newPos = chooseLocation();
             Instantiate(tS, newPos, Quaternion.identity);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(teleportDelay);
             transform.position = newPos;
            
         }

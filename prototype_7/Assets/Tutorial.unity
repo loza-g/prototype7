@@ -499,8 +499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 319200207}
-  ducksRemaining: 10
-  bulletsRemaining: 10
+  audioPlayerWin: {fileID: 0}
+  audioPlayerLose: {fileID: 0}
+  ducksRemaining: 1
+  bulletsRemaining: 3
+  totalTime: 30
 --- !u!1 &873835127
 GameObject:
   m_ObjectHideFlags: 0

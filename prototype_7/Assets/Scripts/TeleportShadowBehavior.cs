@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class TeleportShadowBehavior : MonoBehaviour
 {
+    public float teleportDelay = 1f;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(waitXSecondsThenDestroy(0.5f));
+        StartCoroutine(waitXSecondsThenDestroy(teleportDelay));
     }
 
     // Update is called once per frame
