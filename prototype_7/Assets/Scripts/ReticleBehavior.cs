@@ -14,16 +14,14 @@ public class ReticleBehavior : MonoBehaviour
         Cursor.visible = false;
         gm = gmObject.GetComponent<GameManagerBehavior>();
         // start the coroutine to shake the reticle
-        StartCoroutine(mouseManager());
+        // StartCoroutine(mouseManager());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        // keep the sprite centered on the mouse
-        
-        // get the mouse position
+
         Vector3 mousePos = Input.mousePosition;
         // convert the mouse position to world coordinates
         Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
@@ -31,7 +29,8 @@ public class ReticleBehavior : MonoBehaviour
         mousePosWorld.z = 1;
         // set the position of the reticle to the mouse position
         transform.position = mousePosWorld;
-        transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+        // transform.position = transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
+        
 
     }
 
@@ -43,7 +42,7 @@ public class ReticleBehavior : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePos);
             mousePosWorld.z = 1;
-            Vector3 offset = new Vector3(Mathf.Sin(currentAngle), Mathf.Cos(currentAngle), 0) * 0.1f;
+            Vector3 offset = new Vector3(Mathf.Sin(currentAngle++), Mathf.Cos(currentAngle++), 0) * 0.1f;
             transform.position = mousePosWorld + offset;
 
         }

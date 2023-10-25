@@ -32,6 +32,7 @@ public class DuckBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameMgr = GameObject.Find("Game Manager").GetComponent<GameManagerBehavior>();
         currentDirection = direction.up;
         StartCoroutine(directionManager());
         
