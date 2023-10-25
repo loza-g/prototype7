@@ -52,6 +52,6 @@ MonoBehaviour:
   maxSpawnTime_a: 0.001
   minSpawnTime_b: 0.001
   maxSpawnTime_b: 0.001
-  powerLifetime: 5
+  powerLifetime: 30
   maxSpawnCount_a: 3
   maxSpawnCount_b: 2

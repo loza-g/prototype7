@@ -16,7 +16,8 @@ public class speedPowerUp : MonoBehaviour
     public float powerLifetime = 30f;
     public int maxSpawnCount_a = 3;
     public int maxSpawnCount_b = 3;
-
+    public int maxSpawnCount_eater = 1;
+    public int maxSpawnCount_teleport = 2;
     private int currentSpawnCount_eater;
     private int currentSpawnCount_speed;
     private int currentSpawnCount_teleport;
@@ -44,7 +45,7 @@ public class speedPowerUp : MonoBehaviour
     private IEnumerator spawnEater()
     {
         //if max spawn count has not been reached and no other power up is spawned
-        while (currentSpawnCount_eater < maxSpawnCount_a)
+        while (currentSpawnCount_eater < maxSpawnCount_eater)
         {
             yield return new WaitForSeconds(maxSpawnTime_a);
             InstantiatePowerUp(bulletEater);
@@ -57,7 +58,7 @@ public class speedPowerUp : MonoBehaviour
     private IEnumerator spawnTeleport()
     {
         //if max spawn count has not been reached and no other power up is spawned
-        while (currentSpawnCount_eater < maxSpawnCount_a)
+        while (currentSpawnCount_teleport < maxSpawnCount_teleport)
         {
             yield return new WaitForSeconds(maxSpawnTime_a);
             InstantiatePowerUp(teleport);

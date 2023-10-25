@@ -13,6 +13,9 @@ public class GameManagerBehavior : MonoBehaviour
     private TextMeshProUGUI timeRemainingText;
     [SerializeField] private AudioSource audioPlayerWin;
     [SerializeField] private AudioSource audioPlayerLose;
+    [SerializeField] private AudioSource audioPlayerShoot;
+
+    [SerializeField] private AudioSource audioPlayerbg;
     public int ducksRemaining = 10;
     public int bulletsRemaining = 10;
     public float totalTime = 30f;
@@ -21,6 +24,7 @@ public class GameManagerBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioPlayerbg.Play();
         ducksRemainingText = ui.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         bulletsRemainingText = ui.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
         timeRemainingText = ui.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
@@ -63,6 +67,7 @@ public class GameManagerBehavior : MonoBehaviour
         {
             if (bulletsRemaining > 0)
             {
+                audioPlayerShoot.Play();
                 Debug.Log("mouse down");
                 // get the mouse position
                 Vector3 mousePos = Input.mousePosition;
@@ -103,12 +108,15 @@ public class GameManagerBehavior : MonoBehaviour
 
         if(ducksRemaining == 0)
         {
-            //load next scene, play success audio 
+            audioPlayerWin.Play();
+            //load next scene, play success audio
             LoadNextScene();
         }
-        if(bulletsRemaining == 0 && ducksRemaining > 0 || timeLeft == 0)
+        if(bulletsRemaining <= 0 && ducksRemaining > 0 || timeLeft == 0)
         {
+            audioPlayerLose.Play();
             Reset();
+            //RestartCurrentScene();
         }
 
     }
