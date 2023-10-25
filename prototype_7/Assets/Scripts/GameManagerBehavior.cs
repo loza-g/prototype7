@@ -10,6 +10,7 @@ public class GameManagerBehavior : MonoBehaviour
     
     private TextMeshProUGUI ducksRemainingText;
     private TextMeshProUGUI bulletsRemainingText;
+    private TextMeshProUGUI timeRemainingText;
     [SerializeField] private AudioSource audioPlayerWin;
     [SerializeField] private AudioSource audioPlayerLose;
     public int ducksRemaining = 10;
@@ -22,6 +23,8 @@ public class GameManagerBehavior : MonoBehaviour
     {
         ducksRemainingText = ui.transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
         bulletsRemainingText = ui.transform.GetChild(1).gameObject.GetComponent<TextMeshProUGUI>();
+        timeRemainingText = ui.transform.GetChild(2).gameObject.GetComponent<TextMeshProUGUI>();
+
         timeLeft = totalTime;
     }
 
@@ -53,6 +56,7 @@ public class GameManagerBehavior : MonoBehaviour
 
         ducksRemainingText.text = "ducks remaining: " + ducksRemaining;
         bulletsRemainingText.text = "bullets remaining: " + bulletsRemaining;
+        timeRemainingText.text = "time remaining: " + Mathf.RoundToInt(timeLeft);
 
         // check if mouse is clicked
         if (Input.GetMouseButtonDown(0))
@@ -124,6 +128,8 @@ public class GameManagerBehavior : MonoBehaviour
     public void LoadNextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+
     }
 
     public void RestartCurrentScene()
