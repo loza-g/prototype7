@@ -34,7 +34,8 @@ public class DuckBehavior : MonoBehaviour
     void Start()
     {
         gameMgr = GameObject.Find("Game Manager").GetComponent<GameManagerBehavior>();
-        currentDirection = direction.up;
+        direction[] startingDirections = {direction.up, direction.diagonalUpLeft, direction.diagonalUpRight};
+        currentDirection = startingDirections[Random.Range(0, 3)];
         StartCoroutine(directionManager());
         
     }

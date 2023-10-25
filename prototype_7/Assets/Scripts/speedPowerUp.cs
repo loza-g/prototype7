@@ -96,7 +96,7 @@ public class speedPowerUp : MonoBehaviour
 
     private void InstantiatePowerUp(GameObject obj)
     {
-            Vector3 powerupPos;
+            Vector3 powerupPos = new Vector3(0, 0, 0);
 
             GameObject[] ducks = GameObject.FindGameObjectsWithTag("Duck");
             
@@ -134,10 +134,10 @@ public class speedPowerUp : MonoBehaviour
         // Instantiate  at the random position
         GameObject power = Instantiate(obj, powerupPos, Quaternion.identity);
         //Destroy(power, powerLifetime); // Destroy the object after _ seconds
-        if (power != null)
-        {
-            StartCoroutine(DestroyAfterTime(power, powerLifetime));
-        }
+        // if (power != null)
+        // {
+        //     StartCoroutine(DestroyAfterTime(power, powerLifetime));
+        // }
        
     }
 
