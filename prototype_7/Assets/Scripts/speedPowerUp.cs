@@ -98,38 +98,40 @@ public class speedPowerUp : MonoBehaviour
     {
             Vector3 powerupPos = new Vector3(0, 0, 0);
 
-            GameObject[] ducks = GameObject.FindGameObjectsWithTag("Duck");
+            // GameObject[] ducks = GameObject.FindGameObjectsWithTag("Duck");
             
-            if (ducks.Length == 1)
-            {
-                // spawn powerpoint within a 2 unit radius of the duck but not offscreen
-                Vector3 duckPos = ducks[0].transform.position;
+            // if (ducks.Length == 1)
+            // {
+            //     // spawn powerpoint within a 2 unit radius of the duck but not offscreen
+            //     Vector3 duckPos = ducks[0].transform.position;
 
-                powerupPos = new Vector3(Random.Range(duckPos.x - 2, duckPos.x + 2), Random.Range(duckPos.y - 2, duckPos.y + 2), 0);
+            //     powerupPos = new Vector3(Random.Range(duckPos.x - 2, duckPos.x + 2), Random.Range(duckPos.y - 2, duckPos.y + 2), 0);
 
-                // while powerupPos is not onscreen repeat this process
-                while (powerupPos.x < 0 || powerupPos.x > Screen.width || powerupPos.y < 0 || powerupPos.y > Screen.height)
-                {
-                    powerupPos = new Vector3(Random.Range(duckPos.x - 2, duckPos.x + 2), Random.Range(duckPos.y - 2, duckPos.y + 2), 0);
-                }
-            }
-            else
-            {
-                // Generate random position within the screen
-                Vector3 randomPosition = new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0);
+            //     // while powerupPos is not onscreen repeat this process
+            //     while (powerupPos.x < 0 || powerupPos.x > Screen.width || powerupPos.y < 0 || powerupPos.y > Screen.height)
+            //     {
+            //         powerupPos = new Vector3(Random.Range(duckPos.x - 2, duckPos.x + 2), Random.Range(duckPos.y - 2, duckPos.y + 2), 0);
+            //     }
+            // }
+            // else
+            // {
+            //     // Generate random position within the screen
+            //     Vector3 randomPosition = new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0);
 
-                // calculate moment of all duck positions
-                powerupPos = new Vector3(0, 0, 0);
-                foreach (GameObject duck in ducks)
-                {
-                    powerupPos += duck.transform.position;
-                }
-                powerupPos /= ducks.Length;
-            }
+            //     // calculate moment of all duck positions
+            //     powerupPos = new Vector3(0, 0, 0);
+            //     foreach (GameObject duck in ducks)
+            //     {
+            //         powerupPos += duck.transform.position;
+            //     }
+            //     powerupPos /= ducks.Length;
+            // }
 
-        
-        // Vector3 worldPosition = Camera.main.ScreenToWorldPoint(randomPosition);
-        // worldPosition.z = 0; // Make sure the object is at the same Z position as the camera
+        Vector3 randomPosition = new Vector3(Random.Range(0, Screen.width), Random.Range(0, Screen.height), 0);
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(randomPosition);
+
+        powerupPos = worldPosition;
+        powerupPos.z = 0; // Make sure the object is at the same Z position as the camera
 
         // Instantiate  at the random position
         GameObject power = Instantiate(obj, powerupPos, Quaternion.identity);
